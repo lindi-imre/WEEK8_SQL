@@ -9,11 +9,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-
---
--- Table structure for table `countries`
---
-
 CREATE TABLE IF NOT EXISTS `countries` (
   `COUNTRY_ID` varchar(2) NOT NULL,
   `COUNTRY_NAME` varchar(40) DEFAULT NULL,
@@ -22,9 +17,6 @@ CREATE TABLE IF NOT EXISTS `countries` (
   KEY `COUNTR_REG_FK` (`REGION_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `countries`
---
 
 INSERT INTO `countries` (`COUNTRY_ID`, `COUNTRY_NAME`, `REGION_ID`) VALUES
 ('AR', 'Argentina', '2'),
@@ -53,11 +45,6 @@ INSERT INTO `countries` (`COUNTRY_ID`, `COUNTRY_NAME`, `REGION_ID`) VALUES
 ('ZM', 'Zambia', '4'),
 ('ZW', 'Zimbabwe', '4');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `departments`
---
 
 CREATE TABLE IF NOT EXISTS `departments` (
   `DEPARTMENT_ID` decimal(4,0) NOT NULL DEFAULT '0',
@@ -69,9 +56,6 @@ CREATE TABLE IF NOT EXISTS `departments` (
   KEY `DEPT_LOCATION_IX` (`LOCATION_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `departments`
---
 
 INSERT INTO `departments` (`DEPARTMENT_ID`, `DEPARTMENT_NAME`, `MANAGER_ID`, `LOCATION_ID`) VALUES
 ('10', 'Administration', '200', '1700'),
@@ -102,11 +86,6 @@ INSERT INTO `departments` (`DEPARTMENT_ID`, `DEPARTMENT_NAME`, `MANAGER_ID`, `LO
 ('260', 'Recruiting', '0', '1700'),
 ('270', 'Payroll', '0', '1700');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `employees`
---
 
 CREATE TABLE IF NOT EXISTS `employees` (
   `EMPLOYEE_ID` decimal(6,0) NOT NULL DEFAULT '0',
@@ -128,9 +107,6 @@ CREATE TABLE IF NOT EXISTS `employees` (
   KEY `EMP_NAME_IX` (`LAST_NAME`,`FIRST_NAME`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `employees`
---
 
 INSERT INTO `employees` (`EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHONE_NUMBER`, `HIRE_DATE`, `JOB_ID`, `SALARY`, `COMMISSION_PCT`, `MANAGER_ID`, `DEPARTMENT_ID`) VALUES
 ('100', 'Steven', 'King', 'SKING', '515.123.4567', '1987-06-17', 'AD_PRES', '24000.00', '0.00', '0', '90'),
@@ -241,11 +217,6 @@ INSERT INTO `employees` (`EMPLOYEE_ID`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `PHO
 ('205', 'Shelley', 'Higgins', 'SHIGGINS', '515.123.8080', '1987-09-30', 'AC_MGR', '12000.00', '0.00', '101', '110'),
 ('206', 'William', 'Gietz', 'WGIETZ', '515.123.8181', '1987-10-01', 'AC_ACCOUNT', '8300.00', '0.00', '205', '110');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `job_history`
---
 
 CREATE TABLE IF NOT EXISTS `job_history` (
   `EMPLOYEE_ID` decimal(6,0) NOT NULL,
@@ -259,9 +230,6 @@ CREATE TABLE IF NOT EXISTS `job_history` (
   KEY `JHIST_JOB_IX` (`JOB_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `job_history`
---
 
 INSERT INTO `job_history` (`EMPLOYEE_ID`, `START_DATE`, `END_DATE`, `JOB_ID`, `DEPARTMENT_ID`) VALUES
 ('102', '1993-01-13', '1998-07-24', 'IT_PROG', '60'),
@@ -276,11 +244,6 @@ INSERT INTO `job_history` (`EMPLOYEE_ID`, `START_DATE`, `END_DATE`, `JOB_ID`, `D
 ('200', '1994-07-01', '1998-12-31', 'AC_ACCOUNT', '90'),
 ('0', '0000-00-00', '0000-00-00', '', '0');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `jobs`
---
 
 CREATE TABLE IF NOT EXISTS `jobs` (
   `JOB_ID` varchar(10) NOT NULL DEFAULT '',
@@ -290,9 +253,6 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   PRIMARY KEY (`JOB_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `jobs`
---
 
 INSERT INTO `jobs` (`JOB_ID`, `JOB_TITLE`, `MIN_SALARY`, `MAX_SALARY`) VALUES
 ('AD_PRES', 'President', '20000', '40000'),
@@ -315,11 +275,6 @@ INSERT INTO `jobs` (`JOB_ID`, `JOB_TITLE`, `MIN_SALARY`, `MAX_SALARY`) VALUES
 ('HR_REP', 'Human Resources Representative', '4000', '9000'),
 ('PR_REP', 'Public Relations Representative', '4500', '10500');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `locations`
---
 
 CREATE TABLE IF NOT EXISTS `locations` (
   `LOCATION_ID` decimal(4,0) NOT NULL DEFAULT '0',
@@ -334,9 +289,6 @@ CREATE TABLE IF NOT EXISTS `locations` (
   KEY `LOC_STATE_PROVINCE_IX` (`STATE_PROVINCE`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `locations`
---
 
 INSERT INTO `locations` (`LOCATION_ID`, `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`, `STATE_PROVINCE`, `COUNTRY_ID`) VALUES
 ('1000', '1297 Via Cola di Rie', '989', 'Roma', '', 'IT'),
@@ -363,11 +315,6 @@ INSERT INTO `locations` (`LOCATION_ID`, `STREET_ADDRESS`, `POSTAL_CODE`, `CITY`,
 ('3100', 'Pieter Breughelstraat 837', '3029SK', 'Utrecht', 'Utrecht', 'NL'),
 ('3200', 'Mariano Escobedo 9991', '11932', 'Mexico City', '"Distrito Federal', '"');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `regions`
---
 
 CREATE TABLE IF NOT EXISTS `regions` (
   `REGION_ID` decimal(5,0) NOT NULL,
@@ -376,9 +323,6 @@ CREATE TABLE IF NOT EXISTS `regions` (
   UNIQUE KEY `sss` (`REGION_NAME`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `regions`
---
 
 INSERT INTO `regions` (`REGION_ID`, `REGION_NAME`) VALUES
 ('1', 'Europe\r'),
